@@ -25,7 +25,8 @@ public class test {
 		
 		driver.findElement(By.id("Login")).click();
 		
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
 		
 		
 	}
