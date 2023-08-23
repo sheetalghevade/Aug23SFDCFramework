@@ -39,12 +39,14 @@ public class TC11 {
 			}
 			else {
 				System.out.println("Fail");
+			
 			}
+			String ViewName = "view34";
 			driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]")).click();
 			
 			driver.findElement(By.linkText("Create New View")).click();
 			
-			driver.findElement(By.id("fname")).sendKeys("View12");
+			driver.findElement(By.id("fname")).sendKeys(ViewName);
 			driver.findElement(By.id("devname")).sendKeys("viewun12");
 			
 			driver.findElement(By.xpath("//input[@value = \" Save \"]")).click();
