@@ -23,12 +23,12 @@ public class test {
 		pswrd.clear();
 		pswrd.sendKeys("test1234");
 		
-//		driver.findElement(By.id("Login")).click();
+		driver.findElement(By.id("Login")).click();
+		
 		
 		Thread.sleep(4000);
 		
-		
-		
+
 	}
 
 }
