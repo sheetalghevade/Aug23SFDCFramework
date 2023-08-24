@@ -15,6 +15,7 @@ public class TestNG {
 		driver.findElement(By.id("Login")).click();
 	}
 	
+
 	@Test
 	public void out() {
 		driver.close();
@@ -28,4 +29,5 @@ public class TestNG {
 		driver.findElement(By.id("password")).sendKeys("test1234");
 		driver.findElement(By.id("Login")).click();
 	}
+
 }
