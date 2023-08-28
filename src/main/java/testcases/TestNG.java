@@ -13,6 +13,7 @@ public class TestNG {
 		driver.findElement(By.id("username")).sendKeys("sheetalg@tek.com");
 		driver.findElement(By.id("password")).sendKeys("test1234");
 		driver.findElement(By.id("Login")).click();
+		System.out.println("Message");
 	}
 	
 
