@@ -1,5 +1,4 @@
 package demo;
-import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,13 +15,8 @@ public class CurrencyConverot {
 		driver = new FirefoxDriver();
 		driver.get("https://www.xe.com");
 		
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-//		Thread.sleep(4000);
-		
 		driver.findElement(By.xpath("//input[@id='midmarketFromCurrency']")).sendKeys("USD"+Keys.ENTER);
-//		Thread.sleep(4000);
         driver.findElement(By.xpath("//input[@id='midmarketToCurrency']")).sendKeys("INR"+Keys.ENTER); 
-        
         Thread.sleep(4000);
         driver.findElement(By.xpath("//*[@style='grid-area:buttons']")).click();		
 	}

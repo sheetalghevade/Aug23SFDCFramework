@@ -1,46 +1,103 @@
 package tests;
 
 import java.io.IOException;
+//import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.support.ui.ExpectedCondition;
+//import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import constants.FileConstants;
+//import constants.WaitConstants;
 import pages.LoginPage;
+import pages.UserMenuPage;
+import utils.CommonUtils;
 import utils.FileUtils;
 
-public class LoginTests {
+public class LoginTests extends BaseTest{
 
 	@Test
 	public void loginTest1() throws InvalidFormatException, IOException {
 		WebDriver driver = BaseTest.getDriver();
+		
 		LoginPage lp = new LoginPage(driver);
-		driver.get("https://login.salesforce.com");
+		driver.get(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "prod.url"));
 //		String[] creds = ExcelUtils.readLoginTestData(1);
 		lp.username.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "username"));
-		lp.password.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "password"));
-		
-		Assert.assertEquals(lp.selectRememberMeCheckBox(), "");
-		
-		lp.loginButton.click();
-		
-		
-	}
-	
-	
-	@Test
-	public void loginTest2() {
-		
-		WebDriver driver = BaseTest.getDriver();
-		LoginPage lp = new LoginPage(driver);
-		driver.get("https://login.salesforce.com");
-		lp.username.sendKeys("mithun");
 		lp.password.clear();
 		lp.loginButton.click();
+
+		String output= lp.errorMessage.getText();
+		String expected =FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "expected1");
+		
+		Assert.assertEquals(expected, output);
+
 		
 	}
 	
+	@Test
+	public void loginTest2() throws InvalidFormatException, IOException {
+	WebDriver driver = BaseTest.getDriver();
 	
+	LoginPage lp = new LoginPage(driver);
+	lp.loginToApp(driver);
+    Assert.assertEquals(lp.homepageisDisplayed(driver), true);
+	}
+	
+//	Description: Remmeber me checkbox check.
+	@Test
+	
+	public void loginTest3() throws InvalidFormatException, IOException, InterruptedException {
+		WebDriver driver = BaseTest.getDriver();
+		
+		LoginPage lp = new LoginPage(driver);
+		lp.loginRememberMe(driver);
+		
+		Assert.assertEquals(lp.homepageisDisplayed(driver), true);
+	
+		
+		UserMenuPage ump = new UserMenuPage(driver);
+		CommonUtils.waitForElement(driver, ump.userMenu);
+		ump.userMenu.click();
+		CommonUtils.waitForElement(driver, ump.Logout);
+		
+		ump.Logout.click();
+		
+		
+		CommonUtils.waitForElementvisible(driver, lp.username);
+					
+		Assert.assertEquals(lp.usernameDisplayed(driver), true);
+		
+	}
+	
+//	@Test
+		public void loginTest4A() throws InvalidFormatException, IOException {
+			WebDriver driver = BaseTest.getDriver();
+			
+			LoginPage lp = new LoginPage(driver);
+			driver.get(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "prod.url"));
+			lp.forgotPassword.click();
+
+			lp.forgotUsername.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "username"));
+			lp.Continue.click();
+			Assert.assertEquals(lp.emailSent(driver), true);
+				
+			}	
+ 
+	@Test(description="Validate Login Error Message")
+	public void loginTest4B() throws InvalidFormatException, IOException {
+		WebDriver driver = BaseTest.getDriver();
+		
+		LoginPage lp = new LoginPage(driver);
+		driver.get(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "prod.url"));
+		lp.username.sendKeys("tekarch.com");
+		lp.password.sendKeys("1234");
+		lp.loginButton.click();
+		
+		Assert.assertEquals(lp.checkEmailPassword(driver), true);
+			
+		}	
 }

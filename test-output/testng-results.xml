@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-28T14:39:09 PDT" name="Default suite" finished-at="2023-08-28T14:39:21 PDT" duration-ms="11719">
+  <suite started-at="2023-09-11T23:35:14 PDT" name="Default suite" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11760">
     <groups>
     </groups>
-    <test started-at="2023-08-28T14:39:09 PDT" name="Default test" finished-at="2023-08-28T14:39:21 PDT" duration-ms="11719">
+    <test started-at="2023-09-11T23:35:14 PDT" name="Default test" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11760">
       <class name="demo.CurrencyConverot">
-        <test-method signature="currency()[pri:0, instance:demo.CurrencyConverot@6221a451]" started-at="2023-08-28T14:39:09 PDT" name="currency" finished-at="2023-08-28T14:39:21 PDT" duration-ms="11677" status="PASS">
+        <test-method signature="currency()[pri:0, instance:demo.CurrencyConverot@1c7696c6]" started-at="2023-09-11T23:35:14 PDT" name="currency" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- currency -->
