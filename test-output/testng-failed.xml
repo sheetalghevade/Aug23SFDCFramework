@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="demo.CurrencyConverot">
+      <class name="tests.LeadsTests">
         <methods>
-          <include name="currency"/>
+          <include name="setDriver"/>
+          <include name="leads_TC22"/>
+          <include name="tearDown"/>
+          <include name="navigateToHome"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- demo.CurrencyConverot -->
+      </class> <!-- tests.LeadsTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

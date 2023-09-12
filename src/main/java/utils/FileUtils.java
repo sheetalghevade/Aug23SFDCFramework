@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import constants.FileConstants;
+
 public class FileUtils {
 
 
@@ -15,5 +17,27 @@ public class FileUtils {
 		Properties p = new Properties();
 		p.load(fr);
 		return p.getProperty(key);
+		}
+	
+	/**
+	 * @param key
+	 * @return
+	 * @throws IOException
+	 */
+	public static String readUserMenuTestData(String key) throws IOException {
+		File f = new File(FileConstants.USER_MENU_TESTDATA_FILE_PATH);
+		FileReader fr = new FileReader(f);
+		Properties p = new Properties();
+		p.load(fr);
+		return p.getProperty(key);
 	}
+	
+	public static String readLeadsDrpDownData(String key) throws IOException {
+		File f = new File(FileConstants.LEADS_MENU_TESTDATA_FILE_PATH);
+		FileReader fr = new FileReader(f);
+		Properties p = new Properties();
+		p.load(fr);
+		return p.getProperty(key);
+	}
+	
 }

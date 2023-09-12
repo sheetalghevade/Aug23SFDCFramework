@@ -1,7 +1,9 @@
 package testcases;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TC2 {
@@ -15,6 +17,11 @@ public class TC2 {
 	    driver.manage().window().maximize();
 		driver.findElement(By.id("username")).sendKeys("sheetalg@tek.com");
 		driver.findElement(By.id("password")).sendKeys("test1234");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("alert('Search Me');");
+		
+		
 		
 		driver.findElement(By.xpath("//input[@value=\"Log In\"]")).click();
 		
