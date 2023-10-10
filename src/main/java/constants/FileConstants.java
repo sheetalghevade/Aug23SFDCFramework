@@ -14,7 +14,7 @@ public class FileConstants {
 //	File name will look like as 20230905090000_SFDC.html
 		public static final String SCREENSHOT_PATH =  System.getProperty("user.dir") + "/src/main/resources/reports/"+CommonUtils.getDateAndTimeStamp()+"_SFDC.PNG";
 		public static final String LEADS_MENU_TESTDATA_FILE_PATH =  System.getProperty("user.dir") + "/src/main/resources/testdata/LeadsmenuTestData.properties";
-		
+		public static final String OPTY_MENU_TESTDATA_FILE_PATH =  System.getProperty("user.dir") + "/src/main/resources/testdata/OpportunitiesTestData.properties";
 		
 	}
 

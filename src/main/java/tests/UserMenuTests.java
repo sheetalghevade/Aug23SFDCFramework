@@ -1,23 +1,27 @@
 package tests;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 //import org.testng.asserts.SoftAssert;
 
 import constants.FileConstants;
+import listeners.SFDClisteners;
 import pages.LoginPage;
 import pages.UserMenuPage;
 import utils.CommonUtils;
 
-
+@Listeners(SFDClisteners.class)
 
 public class UserMenuTests extends BaseTest{
 	
@@ -29,8 +33,8 @@ public class UserMenuTests extends BaseTest{
 	}
 
 	
-	@Test
-	public void userMenuDropDown_TC5(Method name) throws IOException, InterruptedException {
+	@Test(description="Select user menu for <username> drop down")
+	public void userMenuDropDown_TC05(Method name) throws IOException, InterruptedException {
 	
 	WebDriver driver = BaseTest.getDriver();
 	BaseTest.test.info("Driver Configured");
@@ -38,18 +42,17 @@ public class UserMenuTests extends BaseTest{
 	UserMenuPage ump = new UserMenuPage(driver);
 	CommonUtils.waitForElement(driver, ump.userMenu);
 	ump.userMenu.click();
-	BaseTest.test.addScreenCaptureFromPath(CommonUtils.getScreenshots(driver));
+	
 	BaseTest.test.info("User Menu Displayed");
+	logger.info("UserMenuTest: userMenuDropDown_05: User Menu Displayed");
 	
 	Assert.assertTrue(ump.verifyUserMenuItems(), "Failed to verify user menu options");
 	BaseTest.test.info("User Menu Verified");
-	BaseTest.test.pass(name.getName()+" Test Passed");
+	
 	}
 	
-//	@Test ()
+//	@Test (description="Select 'My Profile' option from user menu for <username> drop down")
 	public void userMenuDropDown_TC06() throws IOException, InterruptedException {
-		
-//		SoftAssert softAssert = new SoftAssert();
 		
 		WebDriver driver = BaseTest.getDriver();
 		UserMenuPage ump = new UserMenuPage(driver);
@@ -68,12 +71,11 @@ public class UserMenuTests extends BaseTest{
 		Assert.assertTrue(ump.verifyFileUpload(driver, FileConstants.LOGIN_TESTDATA_FILE_PATH));
 		Assert.assertTrue(ump.verifyPhotoUpload(driver, FileConstants.PROFILE_PHOTO_FILE_PATH));
 		
-//	*	Assert.assertEquals(ump.selectRandomOption(), "My profile", "Failed");
 		
 	}
 	
-//	@Test
-	public void userMenuDropDown_TC7() throws IOException, InterruptedException {
+//	@Test(description="Select 'My settings' option from user menu for <username> drop down")
+	public void userMenuDropDown_TC07() throws IOException, InterruptedException {
 	
 	WebDriver driver = BaseTest.getDriver();
 	UserMenuPage ump = new UserMenuPage(driver);
@@ -84,12 +86,14 @@ public class UserMenuTests extends BaseTest{
 	Assert.assertTrue(ump.selectMySettings(), "Failed to open My Settings");
 	CommonUtils.waitForElement(driver, ump.personallink);
 	ump.personallink.click();
+
 	Assert.assertEquals(ump.verifyPersonalLinks(), true);
 	CommonUtils.waitForElement(driver, ump.loginHistorylink);
 	ump.loginHistorylink.click();
 	Assert.assertEquals(ump.loginHistoryPageisDisplayed(driver), true);
+	
 	CommonUtils.waitForElement(driver, ump.logindisplay);
-//	ump.logindisplay.click();
+	ump.logindisplay.click();
 	ump.DisplayLayoutlink.click();
 	CommonUtils.waitForElement(driver, ump.CustomizedTab);
 	ump.CustomizedTab.click();
@@ -98,12 +102,22 @@ public class UserMenuTests extends BaseTest{
 	ump.customDrpdown.click();
 	Select dropdownoption = new Select(ump.customDrpdown);
 	dropdownoption.selectByVisibleText("Salesforce Chatter");
+	CommonUtils.waitForElement(driver, ump.SelectedTabs);
+	ump.checkReport(driver);
+	Assert.assertEquals(ump.verifyReport(driver), true);
+	CommonUtils.waitForElement(driver, ump.save);
+	ump.save.click();
 	
+	ump.email(driver);
+	Assert.assertEquals(ump.verifyemail(), true);
 	
+	ump.calendarandremainder(driver);
+	
+		
 	}
 	
-//	@Test
-	public void userMenuDropDown_TC8() throws IOException, InterruptedException {
+	@Test(description="Select 'Developers Console' option from user menu for <username> drop down")
+	public void userMenuDropDown_TC08() throws IOException, InterruptedException {
 	
 	WebDriver driver = BaseTest.getDriver();
 	UserMenuPage ump = new UserMenuPage(driver);
@@ -117,11 +131,13 @@ public class UserMenuTests extends BaseTest{
 	
 	String oldwindow = driver.getWindowHandle();
 	      Set<String> getAllWindows = driver.getWindowHandles();
+	      System.out.println(getAllWindows.size());
 	      String[]getwindow = getAllWindows.toArray(new String[getAllWindows.size()]);
 	     	      
 	      driver.switchTo().window(getwindow[1]);
 	      driver.manage().window().maximize();
-	      Thread.sleep(4000);
+	      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	      Assert.assertEquals(ump.verifyDevConsolePageDisplayed(driver), true);
 	     driver.close();
 	     driver.switchTo().window(oldwindow);
 	    
@@ -131,8 +147,8 @@ public class UserMenuTests extends BaseTest{
 	  	
 	}
 
-//	@Test
-	public void userMenuDropDown_TC9() throws IOException, InterruptedException {
+//	@Test(description="Select 'Logout' option from user menu for <username> drop down")
+	public void userMenuDropDown_TC09() throws IOException, InterruptedException {
 	
 	WebDriver driver = BaseTest.getDriver();
 	UserMenuPage ump = new UserMenuPage(driver);
@@ -148,4 +164,12 @@ public class UserMenuTests extends BaseTest{
 	  	
 	}
 	
+	
+//	@Test
+	public void two() throws FileNotFoundException{
+		
+		System.out.println("test two");
+		throw new FileNotFoundException();
+		
+	}
 }

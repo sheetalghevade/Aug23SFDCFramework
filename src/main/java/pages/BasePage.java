@@ -1,5 +1,8 @@
 package pages;
 
-public class BasePage {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class BasePage {
+	public static Logger logger =LogManager.getLogger("BASEPAGE");
 }

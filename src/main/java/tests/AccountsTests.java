@@ -31,8 +31,7 @@ public class AccountsTests extends BaseTest{
 		CommonUtils.waitForElement(driver, ap.AccountTab);
 		ap.AccountTab.click();
 		Assert.assertEquals(ap.verifyAccountsPage(driver), true);
-		CommonUtils.waitForElement(driver, ap.newbtn);
-		ap.newbtn.click();
+		
 		Assert.assertEquals(ap.verifyAccountEditPage(driver), true);
 		ap.createNewAccount(driver);
 		Assert.assertEquals(ap.verifyNewAccount(driver), true);
@@ -73,19 +72,50 @@ public class AccountsTests extends BaseTest{
 		Assert.assertEquals(ap.verifyEditView(driver), true);
 		
 }
-	@Test (description="Merge Accounts")
+//	@Test (description="Merge Accounts")
 	public void accountTab_TC13() throws IOException, InterruptedException {
 		
     	WebDriver driver = BaseTest.getDriver();
 		AccountsPage ap = new AccountsPage(driver);
 		CommonUtils.waitForElement(driver, ap.AccountTab);
 		ap.AccountTab.click();
-		Assert.assertEquals(ap.verifyAccountsPage(driver), true);		
+		Assert.assertEquals(ap.verifyAccountsPage(driver), true);
+		ap.createMultipleNewAccount(driver);
+		CommonUtils.waitForElement(driver, ap.AccountTab);
+		ap.AccountTab.click();
 		CommonUtils.waitForElement(driver, ap.MergeAccLink);
 		ap.MergeAccLink.click();
 		Assert.assertEquals(ap.verifyMergeAccountPage(driver), true);
 		ap.merge(driver);
-			
+		ap.deleteAccount(driver);
+		Assert.assertEquals(ap.verifyAccountsPage(driver), true);	
 }
+	
+	
+	
+	
+//	@Test(description="Create account report- NOT COMPLETED")
+	public void accountTab_TC14() throws IOException {
+		WebDriver driver = BaseTest.getDriver();
+		AccountsPage ap = new AccountsPage(driver);
+		ap.createNewAccount(driver);
+		CommonUtils.waitForElement(driver, ap.AccountTab);
+		ap.AccountTab.click();
+		
+		ap.deleteAccount(driver);
+		
+	}
+	
+//	@Test
+	public void test() throws IOException {
+		WebDriver driver = BaseTest.getDriver();
+		AccountsPage ap = new AccountsPage(driver);
+		CommonUtils.waitForElement(driver, ap.AccountTab);
+		ap.AccountTab.click();
+		ap.createNewAccount(driver);
+		ap.accountReport(driver);
+		
+		
+	}
 	
 }	

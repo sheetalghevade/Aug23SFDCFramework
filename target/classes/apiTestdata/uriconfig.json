@@ -1,0 +1,38 @@
+{
+"login":{
+	"prod":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"qa":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"stagging":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"endpoint":"/login"
+		},
+"addusers":{
+	"prod":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"qa":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"stagging":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"endpoint":"/addData"
+},
+
+"getdata":{
+	"prod":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"qa":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"stagging":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"endpoint":"/getdata"
+},
+
+"update":{
+	"prod":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"qa":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"stagging":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"endpoint":"/updateData"
+
+},
+
+"delete":{
+	"prod":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"qa":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"stagging":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"endpoint":"/deleteData"
+
+}		
+
+}

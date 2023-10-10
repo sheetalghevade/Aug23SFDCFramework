@@ -2,16 +2,66 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-09-11T23:35:14 PDT" name="Default suite" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11760">
+  <suite started-at="2023-10-01T23:19:05 PDT" name="SampleSuite" finished-at="2023-10-01T23:19:23 PDT" duration-ms="18446">
     <groups>
     </groups>
-    <test started-at="2023-09-11T23:35:14 PDT" name="Default test" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11760">
-      <class name="demo.CurrencyConverot">
-        <test-method signature="currency()[pri:0, instance:demo.CurrencyConverot@1c7696c6]" started-at="2023-09-11T23:35:14 PDT" name="currency" finished-at="2023-09-11T23:35:26 PDT" duration-ms="11718" status="PASS">
+    <test started-at="2023-10-01T23:19:05 PDT" name="Chrome browser test" finished-at="2023-10-01T23:19:23 PDT" duration-ms="18446">
+      <class name="tests.OptyTests">
+        <test-method is-config="true" signature="setDriver(java.lang.String,boolean)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:05 PDT" name="setDriver" finished-at="2023-10-01T23:19:08 PDT" duration-ms="3104" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- currency -->
-      </class> <!-- demo.CurrencyConverot -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- setDriver -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:08 PDT" name="navigateToHome" finished-at="2023-10-01T23:19:19 PDT" duration-ms="11337" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:19 PDT" name="setup" finished-at="2023-10-01T23:19:19 PDT" duration-ms="16" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tests.OptyTests.optyTab_TC15() throws java.io.IOException,java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="optyTab_TC15()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:19 PDT" name="optyTab_TC15" description="opportunities drop down" finished-at="2023-10-01T23:19:20 PDT" duration-ms="1192" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- optyTab_TC15 -->
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:20 PDT" name="tearDown" finished-at="2023-10-01T23:19:20 PDT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tests.OptyTests.optyTab_TC15() throws java.io.IOException,java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="delete()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:20 PDT" name="delete" finished-at="2023-10-01T23:19:22 PDT" duration-ms="1587" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delete -->
+        <test-method is-config="true" signature="removeDriver()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:22 PDT" name="removeDriver" finished-at="2023-10-01T23:19:23 PDT" duration-ms="1147" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- removeDriver -->
+      </class> <!-- tests.OptyTests -->
+    </test> <!-- Chrome browser test -->
+  </suite> <!-- SampleSuite -->
 </testng-results>

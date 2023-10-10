@@ -3,15 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.LeadsTests">
+      <class name="tests.OptyTests">
         <methods>
+          <include name="removeDriver"/>
+          <include name="delete"/>
           <include name="setDriver"/>
-          <include name="leads_TC22"/>
+          <include name="optyTab_TC15"/>
           <include name="tearDown"/>
-          <include name="navigateToHome"/>
           <include name="setup"/>
+          <include name="navigateToHome"/>
         </methods>
-      </class> <!-- tests.LeadsTests -->
+      </class> <!-- tests.OptyTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

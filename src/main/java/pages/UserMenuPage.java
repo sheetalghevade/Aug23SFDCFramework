@@ -1,13 +1,16 @@
 package pages;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 //import constants.FileConstants;
 //import constants.WaitConstants;
@@ -40,6 +43,7 @@ public class UserMenuPage extends BasePage{
 
 	@FindBy(xpath = "//*[@id=\"userNav-menuItems\"]/a[2]")
 	public WebElement MySettings;
+	
 
 //	@FindBy(id = "//a[@title='My Settings']")
 //	public WebElement MySettings;
@@ -193,12 +197,22 @@ public class UserMenuPage extends BasePage{
 	
 	@FindBy(xpath = "//*[@id=\"p4\"]/option[9]")
 	public WebElement customApp;
+	
 
-	@FindBy(xpath = "//*[@id=\"duel_select_0\"]/option[73]")
-	public WebElement Availabletab;
+	@FindBy(xpath = "//*[@id=\"duel_select_0\"]")
+	public WebElement AvailableTabs;
+	
+	@FindBy(xpath = "//*[@id=\"duel_select_1\"]")
+	public WebElement SelectedTabs;
+
+//	@FindBy(xpath = "//*[@id=\"duel_select_0\"]/option[73]")
+//	public WebElement Availabletab;
 
 	@FindBy(xpath = "//*[@id=\"duel_select_0_right\"]/img")
 	public WebElement Add;
+	
+	@FindBy(xpath = "//*[@id=\"duel_select_0_left\"]/img")
+	public WebElement Remove;
 
 	@FindBy(xpath = "//*[@id=\"bottomButtonRow\"]/input[1]")
 	public WebElement save;
@@ -225,6 +239,9 @@ public class UserMenuPage extends BasePage{
 
 	@FindBy(xpath = "//*[@id=\"bottomButtonRow\"]/input[1]")
 	public WebElement Saveonemail;
+	
+	@FindBy(xpath = "//*[@class='messageText']")
+	public WebElement SuccessMsg;
 
 	// Calendar and Remainders
 	@FindBy(id = "CalendarAndReminders_font")
@@ -325,6 +342,18 @@ public class UserMenuPage extends BasePage{
 
 	}
 	
+	public boolean verifyDevConsolePageDisplayed(WebDriver driver) throws IOException {
+		String expected ="SfdcDevConsole";
+		
+		if(driver.getPageSource().contains(expected)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
 	public boolean selectMySettings() throws IOException {
 //		return this.selectOptionFromUserMenuOptions(driver, FileUtils.readUserMenuTestData("usermenu.item.profile"));
 		boolean isSelected = false;
@@ -335,6 +364,123 @@ public class UserMenuPage extends BasePage{
 		return isSelected;
 
 	}
+	
+	public void checkReport(WebDriver driver) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Select seltab = new Select(SelectedTabs);		
+		List<WebElement> option = seltab.getOptions();
+		String[] output = new String[option.size()]; 
+		for (int i = 0; i < option.size(); i++) {
+			output[i] = option.get(i).getText();
+            System.out.println(output[i]);
+    	        }
+		
+		for (String element : output){
+	         if (element.contains("Reports")){
+	        	int a= element.indexOf("Reports");
+	        	System.out.println("index of reports is: "+a);
+	             seltab.selectByVisibleText("Reports");
+	              Remove.click();
+	              addReport(driver);
+	         }
+	         
+//	         else {
+//	        	 addReport(driver);
+//	         }
+		}		
+	}
+	 
+	public void addReport(WebDriver driver) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Select seltab = new Select(AvailableTabs);
+		seltab.selectByVisibleText("Reports");
+		Add.click();
+		
+	}
+	
+	
+	public boolean verifyReport(WebDriver driver) {
+		boolean ispresent = false;
+		Select seltab = new Select(SelectedTabs);		
+		List<WebElement> option = seltab.getOptions();
+		String[] output = new String[option.size()]; 
+		for (int i = 0; i < option.size(); i++) {
+			output[i] = option.get(i).getText();
+            System.out.println(output[i]);
+    	        }
+		
+		for (String element : output){
+	         if (element.contains("Reports")){
+	        	 System.out.println("Reports added");
+	              ispresent = true; 
+	         }
+	         	}
+		return ispresent;
+	}
+	
+	
+	public void email(WebDriver driver) throws IOException {
+		CommonUtils.waitForElement(driver,Emaillink);
+		Emaillink.click();
+		CommonUtils.waitForElement(driver, MyEmailSettings);
+		MyEmailSettings.click();
+		CommonUtils.waitForElement(driver, Emailname);
+		Emailname.clear();
+		Emailname.sendKeys(FileUtils.readUserMenuTestData("email.name"));
+		CommonUtils.waitForElement(driver, Emailaddress);
+		Emailaddress.clear();
+		Emailaddress.sendKeys(FileUtils.readUserMenuTestData("email.address"));
+		CommonUtils.waitForElement(driver, Saveonemail);
+		Saveonemail.click();
+		
+	}
+	
+	public boolean verifyemail() throws IOException {
+
+		boolean isMessageVerified = false;
+		String expected ="Your settings have been successfully saved.";
+		String output = SuccessMsg.getText();
+		if (output.equalsIgnoreCase(expected)) {
+			 isMessageVerified = true;
+			} 
+		return isMessageVerified;
+	}
+	
+	public boolean verifyRemainders(WebDriver driver) {
+          String expected ="Reminders";
+		
+		if(driver.getPageSource().contains(expected)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+		
+	
+	public void calendarandremainder(WebDriver driver) throws IOException, InterruptedException {
+		
+		CommonUtils.waitForElement(driver, CalendarAndReminders);
+		CalendarAndReminders.click();
+		CommonUtils.waitForElement(driver, ActivityRemainder);
+		ActivityRemainder.click();
+		CommonUtils.waitForElement(driver, OpenaTestRemainder);
+		OpenaTestRemainder.click();
+		Thread.sleep(3000);   
+	     String parentWindow = driver.getWindowHandle();
+	     System.out.println(parentWindow);
+	     Set<String> windows = driver.getWindowHandles();
+	     windows.remove(parentWindow);
+	     String newwindow = "";
+			for(String handle : windows) { 
+				System.out.println(handle);
+				newwindow = handle;
+			}
+			driver.switchTo().window(newwindow);
+			driver.close();
+			driver.switchTo().window(parentWindow);
+	}
+	
 	
 	public boolean verifyPersonalLinks() throws IOException {
 
