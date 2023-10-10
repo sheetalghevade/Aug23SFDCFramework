@@ -69,7 +69,7 @@ public class LeadsTests extends BaseTest{
 		
 	  }
 	
-	@Test (description="List item 'Todays Leads' work")
+//	@Test (description="List item 'Todays Leads' work")
 	public void leads_TC23() throws IOException, InterruptedException {
 		
     	WebDriver driver = BaseTest.getDriver();
@@ -82,10 +82,42 @@ public class LeadsTests extends BaseTest{
 		Assert.assertEquals(lsp.verifyLeadsMenuItems(), true);
 		Select sel = new Select(lsp.LeadsDrpdwn);
     	sel.selectByVisibleText("Today's Leads");
-    	CommonUtils.waitForElement(driver, lsp.GoBtn);
+    	Assert.assertEquals(lsp.verifyTodaysLeadsPage(driver), true);
+    	lsp.logoutlogin(driver);
+    	CommonUtils.waitForElement(driver, lsp.LeadsTab);
+		lsp.LeadsTab.click();
+		Assert.assertEquals(lsp.verifyLeadsPage(driver), true);
+		CommonUtils.waitForElement(driver, lsp.GoBtn);
     	lsp.GoBtn.click();
     	Assert.assertEquals(lsp.verifyTodaysLeadsPage(driver), true);
-	
 	}
 	
+//	@Test (description="Check 'New' button on Leads Home")
+	public void leads_TC24() throws IOException, InterruptedException {
+		
+    	WebDriver driver = BaseTest.getDriver();
+		LeadsPage lsp = new LeadsPage(driver);
+		CommonUtils.waitForElement(driver, lsp.LeadsTab);
+		lsp.LeadsTab.click();
+		Assert.assertEquals(lsp.verifyLeadsPage(driver), true);
+		CommonUtils.waitForElement(driver, lsp.New);
+		lsp.New.click();
+		Assert.assertEquals(lsp.verifyNewLeadsPage(driver), true);
+		CommonUtils.waitForElement(driver, lsp.LastName);
+		lsp.LastName.sendKeys("ABCD");
+		CommonUtils.waitForElement(driver, lsp.Company);
+		lsp.Company.sendKeys("ABCD");
+		CommonUtils.waitForElement(driver, lsp.Save);
+		lsp.Save.click();
+		Assert.assertEquals(lsp.verifyNewLeadsCreated(driver), true);
+		CommonUtils.waitForElement(driver, lsp.Delete);
+		lsp.Delete.click();
+		driver.switchTo().alert().accept();
+		lsp.LeadsTab.click();
+		Assert.assertEquals(lsp.verifyLeadsPageAfterLeadDelete(driver), true);
+		
+		
+	
+}
+
 }

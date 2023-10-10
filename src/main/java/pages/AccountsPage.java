@@ -2,7 +2,9 @@ package pages;
 
 import java.io.IOException;
 //import java.util.List;
+import java.util.List;
 
+import org.openqa.selenium.By;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import constants.FileConstants;
 import utils.CommonUtils;
@@ -90,6 +93,49 @@ public class AccountsPage extends BasePage  {
 	@FindBy(name = "srchbutton")
 	public WebElement FindAccounts;
 	
+	@FindBy(xpath = "//input[@value = \"Delete\"]")
+	public WebElement DeleteAcc;
+	
+	
+	@FindBy(xpath = "//*[@class='list']")
+	public WebElement table;
+	
+	@FindBy(xpath = "//input[@id='cid0']")
+	public WebElement SelectBox1;
+	
+	@FindBy(xpath = "//input[@id='cid1']")
+	public WebElement SelectBox2;
+	
+	@FindBy(xpath = "//input[@id='cid2']")
+	public WebElement SelectBox3;
+	
+	@FindBy(xpath = "//*[@title='Next']")
+	public WebElement Next;
+	
+	@FindBy(xpath = "//*[@title='Merge']")
+	public WebElement Merge;
+	
+	@FindBy(partialLinkText =  "30 days")
+	public WebElement Reports30days;
+	
+	@FindBy(xpath = "//*[@id=\"ext-gen20\"]")
+	public WebElement DateField;
+	
+	@FindBy(xpath = "//*[@id=\"ext-gen296\"]/div[3]")
+	public WebElement CreatedDate;
+	
+	@FindBy(xpath = "//*[@id=\"ext-gen152\"]")
+	public WebElement From;
+	
+	@FindBy(xpath = "//*[@class=\"x-btn-mc\"]")
+	public WebElement FromToday;
+	
+	
+	@FindBy(xpath = "//*[@id=\"ext-gen154\"]")
+	public WebElement To;
+	
+	@FindBy(xpath = "//*[@class=\" x-btn-text\"]")
+	public WebElement ToToday;
 	
 	
 	
@@ -120,6 +166,8 @@ public class AccountsPage extends BasePage  {
     
     
     public void createNewAccount(WebDriver driver) throws IOException {
+    	CommonUtils.waitForElement(driver, newbtn);
+		newbtn.click();
     	CommonUtils.waitForElement(driver, Accountname);
     	Accountname.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname"));
     	CommonUtils.waitForElement(driver,Accounttype);
@@ -220,6 +268,81 @@ public class AccountsPage extends BasePage  {
 		}
     }
     
+    public void createMultipleNewAccount(WebDriver driver) throws IOException {
+    	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+		CommonUtils.waitForElement(driver, newbtn);
+	    newbtn.click();
+    	CommonUtils.waitForElement(driver, Accountname);
+    	Accountname.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname"));
+    	CommonUtils.waitForElement(driver,Accounttype);
+    	Select drpsel = new Select(Accounttype);
+    	drpsel.selectByValue("Technology Partner");
+    	CommonUtils.waitForElement(driver,CustPriority);
+        Select drpsel1 = new Select(CustPriority);
+      	drpsel1.selectByValue("High");
+      	save.click();
+      	
+      	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+		CommonUtils.waitForElement(driver, newbtn);
+	    newbtn.click();
+	    CommonUtils.waitForElement(driver, Accountname);
+    	Accountname.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname1"));
+    	CommonUtils.waitForElement(driver,Accounttype);
+//    	Select drpse2 = new Select(Accounttype);
+    	drpsel.selectByValue("Technology Partner");
+    	CommonUtils.waitForElement(driver,CustPriority);
+//        Select drpsel2 = new Select(CustPriority);
+      	drpsel1.selectByValue("High");
+      	save.click();
+      	
+      	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+		CommonUtils.waitForElement(driver, newbtn);
+	    newbtn.click();
+	    CommonUtils.waitForElement(driver, Accountname);
+    	Accountname.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname2"));
+    	CommonUtils.waitForElement(driver,Accounttype);
+//    	Select drpse2 = new Select(Accounttype);
+    	drpsel.selectByValue("Technology Partner");
+    	CommonUtils.waitForElement(driver,CustPriority);
+//        Select drpsel2 = new Select(CustPriority);
+      	drpsel1.selectByValue("High");
+      	save.click();
+	    
+     }
+    
+    public void deleteAccounts(WebDriver driver) {
+    	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+		
+		CommonUtils.waitForElement(driver, table);
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
+		for(int rnum=0;rnum<rows.size();rnum++) {
+			List<WebElement> header = rows.get(rnum).findElements(By.tagName("th"));
+			
+			for(int head=0;head<header.size();head++) {
+				List<WebElement> columns=rows.get(rnum).findElements(By.tagName("td"));
+
+
+//				System.out.println(columns.get(0).getText());
+				
+				System.out.print(header.get(head).getText());
+			System.out.print(header.get(0).getText());
+			}
+			header = rows.get(rnum).findElements(By.tagName("td"));
+			for(int head=0;head<header.size();head++) {
+				System.out.print(header.get(head).getText());
+			}
+			System.out.println(" ");
+		}
+		
+    }
+    
+    
+    
+    
     public boolean verifyMergeAccountPage(WebDriver driver){
     	String expected = "Merge My Accounts ~ Salesforce - Developer Edition";
     	if(driver.getPageSource().contains(expected)) {
@@ -234,14 +357,75 @@ public class AccountsPage extends BasePage  {
     
     public void merge(WebDriver driver) throws IOException {
        	CommonUtils.waitForElement(driver,SearchAcc);
-    	SearchAcc.sendKeys("un");
+    	SearchAcc.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname"));
     	CommonUtils.waitForElement(driver, FindAccounts);
     	FindAccounts.click();
-
+    	int rowcount = driver.findElements(By.xpath("//table[@class='list']//tr")).size();
+    	System.out.println(rowcount);
+    	
+    	List<WebElement> totalRowlist = table.findElements(By.tagName("tr"));
+    	for(int i=0;i<totalRowlist.size();i++) {
+    	System.out.println(totalRowlist.get(i).getText());
+    	    	}
+    	
+    	if(totalRowlist.size()>=rowcount-1) {
+    		if(!SelectBox1.isSelected()) {
+    			SelectBox1.click();
+    		}
+    		if(!SelectBox2.isSelected()) {
+    			SelectBox2.click();
+    		}
+    		if(!SelectBox3.isSelected()) {
+    			SelectBox3.click();
+    		}
+    	
+    	}
+    	CommonUtils.moveToElement(driver, Next);
+    	Next.click();
+    	CommonUtils.moveToElement(driver, Merge);
+    	Merge.click();
+    	driver.switchTo().alert().accept();
+    	   	
        }
     
     
+    public void deleteAccount(WebDriver driver) throws IOException {
+    	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+		driver.findElement(By.linkText(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "usraccname"))).click();
+		CommonUtils.waitForElement(driver, DeleteAcc);
+		DeleteAcc.click();
+		driver.switchTo().alert().accept();
+    }
     
-    
-    
+    public void accountReport(WebDriver driver) throws IOException {
+    	CommonUtils.waitForElement(driver, AccountTab);
+		AccountTab.click();
+    	CommonUtils.waitForElement(driver, Reports30days);
+    	Reports30days.click();
+    	
+    	
+    	CommonUtils.waitForElement(driver, DateField);
+    	DateField.click();
+    	
+        WebElement dropdown = driver.findElement(By.xpath("//div[contains(text(),'Created Date')]"));
+
+        dropdown.click();
+    	    	
+    	CommonUtils.waitForElement(driver, From);
+    	From.click();
+    	
+    	CommonUtils.waitForElement(driver, FromToday);
+    	FromToday.click();
+    	
+    	System.out.println("clicked today");
+    	
+    	CommonUtils.waitForElement(driver, To);
+    	To.click();
+    	
+    	CommonUtils.waitForElement(driver, ToToday);
+    	ToToday.click();
+    	
+    	
+    }
 }

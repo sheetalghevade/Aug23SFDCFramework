@@ -9,7 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
+import constants.FileConstants;
 //import constants.FileConstants;
 //import tests.BaseTest;
 import utils.CommonUtils;
@@ -41,8 +43,23 @@ public class LeadsPage extends BasePage{
 	@FindBy(xpath = "//*[@title='Go!']")
 	public WebElement GoBtn;
 	
+	@FindBy(xpath = "//*[@title='New']")
+	public WebElement New;
 	
+	@FindBy(xpath = "//*[@id=\"name_lastlea2\"]")
+	public WebElement LastName;
 	
+	@FindBy(xpath = "//*[@id=\"lea3\"]")
+	public WebElement Company;
+	
+	@FindBy(xpath = "//*[@title='Save']")
+	public WebElement Save;
+	
+	@FindBy(xpath = "//*[@id=\"lea2_ileinner\"]")
+	public WebElement Leadname;
+	
+	@FindBy(xpath = "//*[@title='Delete']")
+	public WebElement Delete;
 	
 	 public boolean verifyLeadsPage(WebDriver driver){
 	    	String expected = "Leads: Home ~ Salesforce - Developer Edition";
@@ -110,6 +127,59 @@ public class LeadsPage extends BasePage{
 				System.out.println("Today's Leads page is not displayed");
 				return false;
 			}
-	    }		 
+	    }
+	 
+	 public void logoutlogin(WebDriver driver) throws IOException {
+		 UserMenuPage ump = new UserMenuPage(driver);
+			CommonUtils.waitForElement(driver, ump.userMenu);
+			ump.userMenu.click();
+			Assert.assertTrue(ump.verifyUserMenuItems(), "Failed to verify user menu options");
+			Assert.assertTrue(ump.selectLogout(), "Failed to logout");
+		 LoginPage lp = new LoginPage(driver);
+			CommonUtils.waitForElement(driver, lp.username);
+				lp.username.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "username"));
+				lp.password.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "password"));
+				lp.loginButton.click();
+	 }
 	
+	 public boolean verifyNewLeadsPage(WebDriver driver){
+	    	String expected = "Lead Edit: New Lead ~ Salesforce - Developer Edition";
+	    	if(driver.getPageSource().contains(expected)) {
+	    		System.out.println("New Leads page is displayed");
+				return true;
+			}
+			else {
+				System.out.println("New Leads page is not displayed");
+				return false;
+			}
+	    }
+	 
+	 
+	 public boolean verifyNewLeadsCreated(WebDriver driver){
+	    	String expected = "ABCD";
+	    	if(Leadname.getText().contains(expected)) {
+	    		System.out.println("New Leads is created");
+				return true;
+			}
+			else {
+				System.out.println("New Leads is not created");
+				return false;
+			}
+	    }
+	 
+	 
+	 
+	 public boolean verifyLeadsPageAfterLeadDelete(WebDriver driver){
+	    	String expected = "ABCD";
+	    	if(driver.getPageSource().contains(expected)) {
+	    		System.out.println("New Lead is not deleted");
+				return false;
+			}
+			else {
+				System.out.println("New Lead is deleted");
+				return true;
+			}
+	    }
+	 
+	 
 }

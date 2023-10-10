@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="SampleSuite">
+	<parameter name="browserName" value="chrome"></parameter>
+	<parameter name="isHeadless" value="false"></parameter>
+	<test name="Chrome browser test">
+		<classes>
+			<class name="tests.OptyTests"></class>
+			<!-- <class name="tests.LoginTests"></class>-->
+			<!-- <class name="tests.UserMenuTest"></class>-->
+			
+		</classes>
+	</test>
+	
+	<!--<parameter name="browserName" value="firefox"></parameter>
+	<parameter name="isHeadless" value="false"></parameter>
+	<test name="Safri Browser tests"> parallel="methods" thread-count="4" 
+		<classes>
+			<class name="tests.LoginTests">
+				<methods>
+					<exclude name="loginTest3"></exclude>
+					<include name="login"></include>
+				</methods>
+			</class>
+			
+			 <class name="tests.UserMenuTest"></class>
+		</classes>
+	</test> -->
+</suite>

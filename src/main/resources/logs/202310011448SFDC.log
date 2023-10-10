@@ -1,0 +1,8 @@
+2023-10-01-14:48:57 INFO  BaseTest: setDriver: spark report configured
+2023-10-01-14:49:00 INFO  BaseTest: setDriver: spark report configured
+2023-10-01-14:49:04 INFO  BaseTest: getBrowserType: Firefox configured
+2023-10-01-14:49:04 INFO  BaseTest: setup: loginTest2 Object is created
+2023-10-01-14:49:05 INFO  LoginPage: loginToApp: application launched
+2023-10-01-14:49:11 INFO  LoginTests: loginTest2: Home Page Displayed
+2023-10-01-14:49:13 INFO  BaseTest: teardown: loginTest2 tearDown is called
+2023-10-01-14:49:13 INFO  BaseTest: setup: loginTest4A Object is created

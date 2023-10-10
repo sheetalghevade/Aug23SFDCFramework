@@ -67,6 +67,7 @@ public class LoginPage extends BasePage{
 
 		driver.get(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "prod.url"));
 		driver.manage().window().maximize();
+		logger.info("LoginPage: loginToApp: application launched");
 		if (CommonUtils.waitForElement(driver, username)) {
 			username.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "username"));
 			password.sendKeys(FileUtils.readPropertiesFile(FileConstants.LOGIN_TESTDATA_FILE_PATH2, "password"));

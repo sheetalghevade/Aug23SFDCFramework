@@ -1,0 +1,18 @@
+{
+	"prod":{
+	"uri":"https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"username":"ghevade@tekarch.com",
+	"password":"Admin123"
+	},
+	"qa":{
+	"uri":"https://test-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"username":"qa.ghevade@tekarch.com",
+	"password":"Admin123"	
+	},
+	"stagging":{
+	"uri":"https://stage-us-central1-qa01-tekarch-accmanager.cloudfunctions.net",
+	"username":"stagging.ghevade@tekarch.com",
+	"password":"Admin123"
+	}
+
+}

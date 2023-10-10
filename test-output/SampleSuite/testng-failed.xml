@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SampleSuite]" guice-stage="DEVELOPMENT">
+  <parameter name="isHeadless" value="false"/>
+  <parameter name="browserName" value="firefox"/>
+  <test thread-count="5" name="Chrome browser test(failed)">
+    <classes>
+      <class name="tests.LoginTests">
+        <methods>
+          <include name="removeDriver"/>
+          <include name="setDriver"/>
+          <include name="loginTest2"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tests.LoginTests -->
+    </classes>
+  </test> <!-- Chrome browser test(failed) -->
+  <test thread-count="5" name="Safri Browser tests(failed)">
+    <classes>
+      <class name="tests.LoginTests">
+        <methods>
+          <include name="removeDriver"/>
+          <include name="setDriver"/>
+          <include name="loginTest2"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tests.LoginTests -->
+    </classes>
+  </test> <!-- Safri Browser tests(failed) -->
+</suite> <!-- Failed suite [SampleSuite] -->
