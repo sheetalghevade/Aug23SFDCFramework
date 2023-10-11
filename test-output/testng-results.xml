@@ -1,67 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-01T23:19:05 PDT" name="SampleSuite" finished-at="2023-10-01T23:19:23 PDT" duration-ms="18446">
+  <suite started-at="2023-10-10T23:06:04 PDT" name="Suite" finished-at="2023-10-10T23:06:11 PDT" duration-ms="6312">
     <groups>
+      <group name="regression">
+        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@77774571]" name="Login" class="testcases.TestNG"/>
+        <method signature="TestNG.out()[pri:0, instance:testcases.TestNG@77774571]" name="out" class="testcases.TestNG"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@77774571]" name="Login" class="testcases.TestNG"/>
+        <method signature="TestNG.ogin()[pri:0, instance:testcases.TestNG@77774571]" name="ogin" class="testcases.TestNG"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2023-10-01T23:19:05 PDT" name="Chrome browser test" finished-at="2023-10-01T23:19:23 PDT" duration-ms="18446">
-      <class name="tests.OptyTests">
-        <test-method is-config="true" signature="setDriver(java.lang.String,boolean)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:05 PDT" name="setDriver" finished-at="2023-10-01T23:19:08 PDT" duration-ms="3104" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
+    <test started-at="2023-10-10T23:06:04 PDT" name="Test" finished-at="2023-10-10T23:06:11 PDT" duration-ms="6312">
+      <class name="testcases.TestNG">
+        <test-method signature="Login()[pri:0, instance:testcases.TestNG@77774571]" started-at="2023-10-10T23:06:05 PDT" name="Login" finished-at="2023-10-10T23:06:11 PDT" duration-ms="6132" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setDriver -->
-        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:08 PDT" name="navigateToHome" finished-at="2023-10-01T23:19:19 PDT" duration-ms="11337" status="PASS">
+        </test-method> <!-- Login -->
+        <test-method signature="ogin()[pri:0, instance:testcases.TestNG@77774571]" started-at="2023-10-10T23:06:11 PDT" name="ogin" finished-at="2023-10-10T23:06:11 PDT" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- navigateToHome -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:19 PDT" name="setup" finished-at="2023-10-01T23:19:19 PDT" duration-ms="16" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void tests.OptyTests.optyTab_TC15() throws java.io.IOException,java.lang.InterruptedException]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- ogin -->
+        <test-method signature="out()[pri:0, instance:testcases.TestNG@77774571]" started-at="2023-10-10T23:06:11 PDT" name="out" finished-at="2023-10-10T23:06:11 PDT" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="optyTab_TC15()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:19 PDT" name="optyTab_TC15" description="opportunities drop down" finished-at="2023-10-01T23:19:20 PDT" duration-ms="1192" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- optyTab_TC15 -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:20 PDT" name="tearDown" finished-at="2023-10-01T23:19:20 PDT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void tests.OptyTests.optyTab_TC15() throws java.io.IOException,java.lang.InterruptedException]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="delete()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:20 PDT" name="delete" finished-at="2023-10-01T23:19:22 PDT" duration-ms="1587" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- delete -->
-        <test-method is-config="true" signature="removeDriver()[pri:0, instance:tests.OptyTests@48f5bde6]" started-at="2023-10-01T23:19:22 PDT" name="removeDriver" finished-at="2023-10-01T23:19:23 PDT" duration-ms="1147" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- removeDriver -->
-      </class> <!-- tests.OptyTests -->
-    </test> <!-- Chrome browser test -->
-  </suite> <!-- SampleSuite -->
+        </test-method> <!-- out -->
+      </class> <!-- testcases.TestNG -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

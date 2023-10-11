@@ -1,0 +1,6 @@
+2023-10-10-23:05:02 INFO  BaseTest: setDriver: spark report configured
+2023-10-10-23:05:06 INFO  BaseTest: getBrowserType: chrome configured
+2023-10-10-23:05:07 INFO  LoginPage: loginToApp: application launched
+2023-10-10-23:05:20 INFO  BaseTest: setup: optyTab_TC15 Object is created
+2023-10-10-23:05:22 INFO  BaseTest: teardown: optyTab_TC15 tearDown is called
+2023-10-10-23:05:23 INFO  BaseTest: removeDriver: remove driver
