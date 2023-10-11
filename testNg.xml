@@ -2,15 +2,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-	  <!-- <groups>
+	  <groups>
 		  <run>
 			  <include name="smoke">
 				  
 			  </include>
 		  </run>
-	  </groups> -->
+	  </groups> 
     <classes>
       <class name="testcases.TestNG"/>
+      <class name="demo.NewTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
