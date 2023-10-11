@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="1" total="5" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-10T23:22:56 PDT" name="Suite" finished-at="2023-10-10T23:23:00 PDT" duration-ms="4046">
+  <suite started-at="2023-10-11T00:59:24 PDT" name="Suite" finished-at="2023-10-11T00:59:31 PDT" duration-ms="7101">
     <groups>
       <group name="regression">
-        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@317e9c3c]" name="Login" class="testcases.TestNG"/>
-        <method signature="TestNG.out()[pri:0, instance:testcases.TestNG@317e9c3c]" name="out" class="testcases.TestNG"/>
+        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@6cd5122d]" name="Login" class="testcases.TestNG"/>
       </group> <!-- regression -->
       <group name="smoke">
-        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@317e9c3c]" name="Login" class="testcases.TestNG"/>
-        <method signature="TestNG.ogin()[pri:0, instance:testcases.TestNG@317e9c3c]" name="ogin" class="testcases.TestNG"/>
+        <method signature="NewTest.f()[pri:0, instance:demo.NewTest@7342e05d]" name="f" class="demo.NewTest"/>
+        <method signature="TestNG.Login()[pri:0, instance:testcases.TestNG@6cd5122d]" name="Login" class="testcases.TestNG"/>
+        <method signature="TestNG.ogin()[pri:0, instance:testcases.TestNG@6cd5122d]" name="ogin" class="testcases.TestNG"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2023-10-10T23:22:56 PDT" name="Test" finished-at="2023-10-10T23:23:00 PDT" duration-ms="4046">
+    <test started-at="2023-10-11T00:59:24 PDT" name="Test" finished-at="2023-10-11T00:59:31 PDT" duration-ms="7101">
       <class name="testcases.TestNG">
-        <test-method signature="Login()[pri:0, instance:testcases.TestNG@317e9c3c]" started-at="2023-10-10T23:22:56 PDT" name="Login" finished-at="2023-10-10T23:23:00 PDT" duration-ms="3966" status="PASS">
+        <test-method signature="Login()[pri:0, instance:testcases.TestNG@6cd5122d]" started-at="2023-10-11T00:59:24 PDT" name="Login" finished-at="2023-10-11T00:59:31 PDT" duration-ms="7011" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method signature="ogin()[pri:0, instance:testcases.TestNG@317e9c3c]" started-at="2023-10-10T23:23:00 PDT" name="ogin" finished-at="2023-10-10T23:23:00 PDT" duration-ms="1" status="PASS">
+        <test-method signature="ogin()[pri:0, instance:testcases.TestNG@6cd5122d]" started-at="2023-10-11T00:59:31 PDT" name="ogin" finished-at="2023-10-11T00:59:31 PDT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ogin -->
-        <test-method signature="out()[pri:0, instance:testcases.TestNG@317e9c3c]" started-at="2023-10-10T23:23:00 PDT" name="out" finished-at="2023-10-10T23:23:00 PDT" duration-ms="0" status="PASS">
+      </class> <!-- testcases.TestNG -->
+      <class name="demo.NewTest">
+        <test-method signature="f()[pri:0, instance:demo.NewTest@7342e05d]" started-at="2023-10-11T00:59:31 PDT" name="f" finished-at="2023-10-11T00:59:31 PDT" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- out -->
-      </class> <!-- testcases.TestNG -->
+        </test-method> <!-- f -->
+      </class> <!-- demo.NewTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
-  <suite started-at="2023-10-10T23:23:00 PDT" name="SampleSuite" finished-at="2023-10-10T23:23:21 PDT" duration-ms="20762">
+  <suite started-at="2023-10-11T00:59:31 PDT" name="SampleSuite" finished-at="2023-10-11T00:59:49 PDT" duration-ms="18167">
     <groups>
     </groups>
-    <test started-at="2023-10-10T23:23:00 PDT" name="Chrome browser test" finished-at="2023-10-10T23:23:21 PDT" duration-ms="20762">
+    <test started-at="2023-10-11T00:59:31 PDT" name="Chrome browser test" finished-at="2023-10-11T00:59:49 PDT" duration-ms="18167">
       <class name="tests.OptyTests">
-        <test-method is-config="true" signature="setDriver(java.lang.String,boolean)[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:00 PDT" name="setDriver" finished-at="2023-10-10T23:23:03 PDT" duration-ms="2923" status="PASS">
+        <test-method is-config="true" signature="setDriver(java.lang.String,boolean)[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:31 PDT" name="setDriver" finished-at="2023-10-11T00:59:33 PDT" duration-ms="2176" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -51,11 +53,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:03 PDT" name="navigateToHome" finished-at="2023-10-10T23:23:16 PDT" duration-ms="12205" status="PASS">
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:33 PDT" name="navigateToHome" finished-at="2023-10-11T00:59:43 PDT" duration-ms="10419" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- navigateToHome -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:16 PDT" name="setup" finished-at="2023-10-10T23:23:16 PDT" duration-ms="18" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:43 PDT" name="setup" finished-at="2023-10-11T00:59:43 PDT" duration-ms="16" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -66,11 +68,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="optyTab_TC15()[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:16 PDT" name="optyTab_TC15" description="opportunities drop down" finished-at="2023-10-10T23:23:17 PDT" duration-ms="1160" status="PASS">
+        <test-method signature="optyTab_TC15()[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:43 PDT" name="optyTab_TC15" description="opportunities drop down" finished-at="2023-10-11T00:59:45 PDT" duration-ms="1384" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- optyTab_TC15 -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:17 PDT" name="tearDown" finished-at="2023-10-10T23:23:17 PDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:45 PDT" name="tearDown" finished-at="2023-10-11T00:59:45 PDT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -81,11 +83,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="delete()[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:17 PDT" name="delete" finished-at="2023-10-10T23:23:19 PDT" duration-ms="2073" status="PASS">
+        <test-method is-config="true" signature="delete()[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:45 PDT" name="delete" finished-at="2023-10-11T00:59:47 PDT" duration-ms="2303" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delete -->
-        <test-method is-config="true" signature="removeDriver()[pri:0, instance:tests.OptyTests@242b6e1a]" started-at="2023-10-10T23:23:19 PDT" name="removeDriver" finished-at="2023-10-10T23:23:21 PDT" duration-ms="2357" status="PASS">
+        <test-method is-config="true" signature="removeDriver()[pri:0, instance:tests.OptyTests@6a1d3225]" started-at="2023-10-11T00:59:47 PDT" name="removeDriver" finished-at="2023-10-11T00:59:49 PDT" duration-ms="1864" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- removeDriver -->

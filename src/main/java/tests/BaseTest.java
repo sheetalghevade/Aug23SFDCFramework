@@ -27,6 +27,9 @@ import constants.FileConstants;
 public class BaseTest {
 
 private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+
+public static ThreadLocal<ExtentTest> threadExtentTest = new ThreadLocal<>();
+
 	static ExtentReports extent = new ExtentReports();
 	static ExtentSparkReporter spark = null;
 	public static ExtentTest test = null;
